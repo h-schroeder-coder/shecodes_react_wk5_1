@@ -1,4 +1,5 @@
 import "./App.css";
+import Weather from "./Weather";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <header className="App-header">
           <h1>Hannah's React Weather App</h1>
         </header>
+        <Weather />
         <footer className="App-footer">
           This webpage was coded by{" "}
           <a
@@ -14,23 +16,37 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            Hannah Schroeder
+            Hannah Schroeder,
           </a>{" "}
-          as part of a{" "}
+          a{" "}
+          <a
+            href="https://www.shecodes.io/graduates/157590-hannah-schroeder"
+            target="_blank"
+            rel="noreferrer"
+          >
+            graduate
+          </a>{" "}
+          of {" "}
+          <a
+            href="https://www.shecodes.io/workshops"
+            target="_blank"
+            rel="noreferrer"
+          >SheCodes,</a>{" "} 
+          as part of the{" "}
           <a
             href="https://www.shecodes.io/workshops"
             target="_blank"
             rel="noreferrer"
           >
-            SheCodes Plus Workshop,
+            SheCodes React Workshop,
           </a>{" "}
-          and is on{" "}
+          is open source on {" "}
           <a
             href="https://github.com/h-schroeder-coder/shecodes_react_wk5_1"
             target="_blank"
             rel="noreferrer"
           >
-            GitHub
+            GitHub,
           </a>{" "}
           and is hosted by{" "}
           <a
