@@ -8,7 +8,7 @@ function App() {
         <header className="App-header">
           <h1>Hannah's React Weather App</h1>
         </header>
-        <Weather />
+        <Weather defaultCity="Chicago" />
         <footer className="App-footer">
           This webpage was coded by{" "}
           <a
@@ -26,12 +26,14 @@ function App() {
           >
             graduate
           </a>{" "}
-          of {" "}
+          of{" "}
           <a
             href="https://www.shecodes.io/workshops"
             target="_blank"
             rel="noreferrer"
-          >SheCodes,</a>{" "} 
+          >
+            SheCodes,
+          </a>{" "}
           as part of the{" "}
           <a
             href="https://www.shecodes.io/workshops"
@@ -40,7 +42,7 @@ function App() {
           >
             SheCodes React Workshop,
           </a>{" "}
-          is open source on {" "}
+          is open source on{" "}
           <a
             href="https://github.com/h-schroeder-coder/shecodes_react_wk5_1"
             target="_blank"

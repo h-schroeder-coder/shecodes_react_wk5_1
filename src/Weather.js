@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
-function Weather() {
+function Weather(props) {
   const [weatherData, setWeatherData] = useState({ready: false});
   
   function handleResponse(response) {
@@ -77,8 +77,7 @@ function Weather() {
     );
   } else {
     const apiKey = "dfc9t54e5b10fea0dcae14f3826ob4e6";
-    let city = "Fall Creek";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
