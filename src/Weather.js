@@ -66,6 +66,7 @@ function Weather(props) {
       </div>
     );
   } else {
+    search();
     return ("Loading...");
   }
 }
