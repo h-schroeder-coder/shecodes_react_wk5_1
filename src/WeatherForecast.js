@@ -1,48 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./WeatherForecast.css";
-import ForecastDate from "./ForecastDate";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
-  const [forecastData, setForecastData] = useState({ ready: false });
-  const [city, setCity] = useState(props.city);
+  const [forecastData, setForecastData] = useState(null);
+  const [ready, setReady] = useState(false);   
+
+useEffect(() => {
+    setReady(false);
+  }, [props.city]);
 
   function handleResponse(response) {
-    console.log(response.data);
-    setForecastData({
-      ready: true,
-      minTemperature: response.data.daily.temperature.minimum,
-      maxTemperature: response.data.daily.temperature.maximum,
-      date: new Date(response.data.time * 1000),
-      description: response.data.daily.condition.description,
-      iconUrl: response.data.daily.condition.icon_url,
-      city: response.data.city,
-    });
-    setCity(response.data.city);
+    setReady(true);
+    setForecastData(response.data.daily);
   }
 
-  if (forecastData.ready) {
+  if (ready) {
     return (
       <div className="WeatherForecast">
         <div className="row">
           <div className="col">
-            <div className="WeatherForecastDaily">
-              <div className="WeatherForecast-day">
-                <ForecastDate />
-              </div>
-              <img
-                src={forecastData.iconUrl}
-                alt={forecastData.description}
-                className="WeatherForecast-icon"
-              />
-              <div className="WeatherForecast-temperatures">
-                <span className="WeatherForecast-temperature-max">
-                  <strong>{Math.round(forecastData.maxTemperature)}°</strong>
-                </span>
-                <span className="WeatherForecast-temperature-min">
-                  {Math.round(forecastData.minTemperature)}°
-                </span>
-              </div>
+            <div className="DailyWeatherForecast row">
+                {forecastData.map(function (dailyForecast, index) { 
+                    if (index < 5) {
+                        return (
+                            <div className="col" key={index}>
+                             <WeatherForecastDay data={dailyForecast} key={index} />
+                            </div>
+                        );
+                    } else {
+                        return null;
+                    }
+                }
+                )}
             </div>
           </div>
         </div>
@@ -50,6 +41,7 @@ export default function WeatherForecast(props) {
     );
   } else {
     const apiKey = "dfc9t54e5b10fea0dcae14f3826ob4e6";
+    let city = props.city;
     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 

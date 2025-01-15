@@ -12,7 +12,9 @@
 .weatherInfo .img {
     height: 80px;
     float: left;
+    padding-right: 10px;
 }
+
 
 .WeatherInfo .temperature {
     font-weight: bold;
