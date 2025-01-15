@@ -14,7 +14,7 @@ export default function WeatherCurrentTemperature(props) {
 
   if (unit === "imperial") {
     return (
-      <div className="WeatherCurrentTemperature col-6">
+      <span className="WeatherCurrentTemperature col-8">
         <span className="temperature">{Math.round(props.fahrenheit)}</span>
         <span className="unit">
           °F |{" "}
@@ -22,18 +22,18 @@ export default function WeatherCurrentTemperature(props) {
             °C
           </a>
         </span>
-      </div>
+      </span>
     );
   } else {
     return (
-      <div className="WeatherCurrentTemperature col-6">
+      <span className="WeatherCurrentTemperature col-6">
         <span className="temperature">
           {Math.round(((props.fahrenheit - 32) * 5) / 9)}
         </span>
         <span className="unit">
           °C | <a href="/" onClick={convertToFahrenheit}>°F</a>
         </span>
-      </div>
+      </span>
     );
   }
 }

@@ -4,6 +4,7 @@ import "./Weather.css";
 import "./WeatherInfo.css";
 import WeatherInfo from "./WeatherInfo";
 
+
 function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
@@ -13,7 +14,7 @@ function Weather(props) {
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
-      currentDayTime: response.data.time,
+      date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
       feelsLike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,

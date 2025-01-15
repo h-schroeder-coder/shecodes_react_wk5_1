@@ -2,6 +2,7 @@ import React from "react";
 import "./WeatherInfo.css";
 import WeatherCurrentTemperature from "./WeatherCurrentTemperature";
 import WeatherCurrentFeel from "./WeatherCurrentFeel";
+import CurrentDate from "./CurrentDate";
 
 export default function WeatherInfo(props) {
     return (
@@ -11,12 +12,12 @@ export default function WeatherInfo(props) {
           <span className="countryName">{props.data.country}</span>
         </h1>
         <ul>
-          <li>{props.data.currentDayTime}</li>
+          <li><CurrentDate date={props.data.date} /></li>
           <li className="text-capitalize">{props.data.description}</li>
         </ul>
         <div className="row">
             <div className="col-7">
-                <div className="col-6">
+                <div className="col-4">
                     <img
                     src={props.data.iconUrl}
                     alt={props.data.description}
